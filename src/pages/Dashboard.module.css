@@ -1,0 +1,352 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  animation: fadeUp 0.4s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.8px;
+  line-height: 1;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted2);
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.deployBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  padding: 11px 22px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  box-shadow: 0 0 28px rgba(99, 102, 241, 0.35);
+}
+
+.deployBtn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.statCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: default;
+}
+
+.statCard:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+}
+
+.statTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted2);
+  letter-spacing: 0.1px;
+}
+
+.statIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}
+
+.statValue {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -1.5px;
+  line-height: 1;
+}
+
+.statChange {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.changeUp {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.changePeriod {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.statBar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.statBarFill {
+  height: 100%;
+  border-radius: 99px;
+  opacity: 0.7;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .bottomGrid { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.cardSub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.viewAllBtn {
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted2);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.viewAllBtn:hover {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table thead th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+  padding: 0 12px 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.tableRow td {
+  padding: 14px 12px 14px 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  color: var(--muted2);
+}
+
+.tableRow:last-child td { border-bottom: none; }
+.tableRow:hover td { background: rgba(255,255,255,0.015); }
+
+.tdId {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px !important;
+  color: var(--muted) !important;
+}
+
+.tdService {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--text) !important;
+}
+
+.branch {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent2);
+  background: rgba(99, 102, 241, 0.08);
+  padding: 4px 9px;
+  border-radius: 6px;
+}
+
+.env {
+  font-size: 12px;
+  color: var(--muted2);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 4px 9px;
+  border-radius: 6px;
+}
+
+.tdTime {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px !important;
+  color: var(--muted) !important;
+  white-space: nowrap;
+}
+
+.liveBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--red);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 99px;
+  padding: 5px 12px;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+.feed { display: flex; flex-direction: column; }
+
+.feedItem {
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.feedLine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+
+.feedDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.feedTrack {
+  width: 1px;
+  flex: 1;
+  background: var(--border);
+  margin: 4px 0;
+  min-height: 16px;
+}
+
+.feedContent {
+  padding-bottom: 20px;
+  flex: 1;
+}
+
+.feedText {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted2);
+  line-height: 1.5;
+}
+
+.feedTime {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  display: block;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
