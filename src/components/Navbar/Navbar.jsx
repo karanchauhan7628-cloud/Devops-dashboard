@@ -1,6 +1,6 @@
 import styles from './Navbar.module.css'
 
-function Navbar({ expanded }) {
+function Navbar({ expanded, user }) {
   const time = new Date().toLocaleTimeString('en-US', {
     hour: '2-digit', minute: '2-digit'
   })
@@ -38,8 +38,9 @@ function Navbar({ expanded }) {
           <span className={styles.notifBadge}>3</span>
         </button>
 
-        <div className={styles.avatarWrap}>
-          <div className={styles.avatar}>KS</div>
+        {/* Avatar shows dynamic initials */}
+        <div className={styles.avatarWrap} title={user.name}>
+          <div className={styles.avatar}>{user.initials}</div>
           <div className={styles.avatarRing} />
         </div>
       </div>

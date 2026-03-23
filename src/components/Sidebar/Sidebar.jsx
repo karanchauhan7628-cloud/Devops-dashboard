@@ -2,12 +2,12 @@ import { NavLink } from 'react-router-dom'
 import styles from './Sidebar.module.css'
 
 const links = [
-  { to: '/',             icon: '◈', label: 'Dashboard',   sub: 'Overview'  },
-  { to: '/deployments',  icon: '⬡', label: 'Deployments', sub: 'Pipeline'  },
-  { to: '/logs',         icon: '≋', label: 'Logs',        sub: 'Activity'  },
+  { to: '/',            icon: '◈', label: 'Dashboard',   sub: 'Overview'  },
+  { to: '/deployments', icon: '⬡', label: 'Deployments', sub: 'Pipeline'  },
+  { to: '/logs',        icon: '≋', label: 'Logs',        sub: 'Activity'  },
 ]
 
-function Sidebar({ expanded, setExpanded }) {
+function Sidebar({ expanded, setExpanded, user }) {
   return (
     <aside className={`${styles.sidebar} ${expanded ? styles.expanded : styles.collapsed}`}>
       <div className={styles.gradientEdge} />
@@ -20,13 +20,16 @@ function Sidebar({ expanded, setExpanded }) {
         <span className={`${styles.toggleIcon} ${expanded ? styles.rotated : ''}`}>›</span>
       </button>
 
+      {/* Logo — shows admin name */}
       <div className={styles.logo}>
         <div className={styles.logoMark}>
-          <span className={styles.logoInner}>D</span>
+          <span className={styles.logoInner}>
+            {user.initials.charAt(0)}
+          </span>
         </div>
         {expanded && (
           <div className={styles.logoText}>
-            <p className={styles.logoName}>DevOps</p>
+            <p className={styles.logoName}>{user.name}</p>
             <p className={styles.logoSub}>Control Panel</p>
           </div>
         )}
@@ -81,12 +84,13 @@ function Sidebar({ expanded, setExpanded }) {
 
       <div className={styles.divider} />
 
-      <div className={styles.user} title={!expanded ? 'Karan S.' : ''}>
-        <div className={styles.avatar}>KS</div>
+      {/* User card — shows dynamic name */}
+      <div className={styles.user} title={!expanded ? user.name : ''}>
+        <div className={styles.avatar}>{user.initials}</div>
         {expanded && (
           <div style={{ flex: 1, overflow: 'hidden' }}>
-            <p className={styles.userName}>Karan S.</p>
-            <p className={styles.userRole}>Frontend Dev</p>
+            <p className={styles.userName}>{user.name}</p>
+            <p className={styles.userRole}>{user.role}</p>
           </div>
         )}
         {expanded && <span className={styles.userMenu}>⋯</span>}

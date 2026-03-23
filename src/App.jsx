@@ -7,24 +7,28 @@ import Deployments from './pages/Deployments'
 import Logs from './pages/Logs'
 import './App.css'
 
+// ✏️ Change this object to update name across the whole app
+const currentUser = {
+  name: 'Karan S.',
+  role: 'Frontend Dev',
+  initials: 'KS',
+}
+
 function App() {
   const [expanded, setExpanded] = useState(true)
 
   return (
     <BrowserRouter>
       <div style={{ display: 'flex', minHeight: '100vh' }}>
-
-        <Sidebar expanded={expanded} setExpanded={setExpanded} />
-
+        <Sidebar expanded={expanded} setExpanded={setExpanded} user={currentUser} />
         <div style={{
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          minWidth: 0,               
+          minWidth: 0,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         }}>
-          <Navbar expanded={expanded} />
-
+          <Navbar expanded={expanded} user={currentUser} />
           <main style={{
             flex: 1,
             padding: expanded ? '32px' : '24px',
@@ -34,13 +38,12 @@ function App() {
             overflowX: 'hidden',
           }}>
             <Routes>
-              <Route path="/"            element={<Dashboard />} />
+              <Route path="/"            element={<Dashboard user={currentUser} />} />
               <Route path="/deployments" element={<Deployments />} />
               <Route path="/logs"        element={<Logs />} />
             </Routes>
           </main>
         </div>
-
       </div>
     </BrowserRouter>
   )
